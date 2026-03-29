@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ExpressVPN Web - Fast &amp; Secure VPN Simulator. Connect to 105 countries instantly with Lightway protocol. Kill Switch, Split Tunneling, no-logs privacy, unlimited bandwidth. Sleek browser VPN experience just like the official app.">
+    <meta name="keywords" content="expressvpn web, online vpn simulator, fast vpn browser, secure vpn web app, lightway protocol, kill switch vpn, split tunneling, no logs vpn, browser vpn, 105 countries vpn">
+    <meta name="author" content="SAMER SAEID">
+    <meta name="robots" content="index, follow">
+    <title>ExpressVPN Web • Fast &amp; Secure VPN for Any Device</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 d-flex align-items-center" href="#">
+                <i class="fas fa-shield-alt text-primary me-2"></i> ExpressVPN
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servers">Servers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a onclick="toggleConnection()" class="nav-link btn btn-primary px-4 ms-3 fw-semibold" href="#">🚀 Quick Connect</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / CONNECT PANEL -->
+    <section id="connect" class="hero py-5 text-white text-center" style="background: linear-gradient(135deg, #0a2540, #112c4e); min-height: 100vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div id="statusBadge" class="d-inline-flex align-items-center gap-2 bg-success bg-opacity-25 text-success px-4 py-2 rounded-pill mb-4">
+                        <i class="fas fa-circle fa-beat"></i>
+                        <span id="connectionStatus" class="fw-bold">DISCONNECTED</span>
+                    </div>
+                    
+                    <h1 class="display-3 fw-bold mb-3">Fast. Secure. Private.</h1>
+                    <p class="lead mb-5 fs-4">Connect to 105 countries in one tap.<br>Lightway protocol • Unlimited bandwidth • No logs.</p>
+                    
+                    <div class="vpn-card mx-auto p-5 rounded-4 shadow-2xl bg-white text-dark" style="max-width: 420px;">
+                        <div class="text-center mb-4">
+                            <i id="globeIcon" class="fas fa-globe fa-7x text-muted"></i>
+                        </div>
+                        <h4 id="currentLocation" class="fw-bold">United States • New York</h4>
+                        <p id="currentIP" class="text-muted mb-4">192.168.1.1 • 105ms</p>
+                        
+                        <button onclick="toggleConnection()" id="connectBtn" class="btn btn-success btn-lg w-100 py-4 fs-4 rounded-3 shadow-lg">
+                            <i id="btnIcon" class="fas fa-power-off me-2"></i>
+                            <span id="btnText">CONNECT NOW</span>
+                        </button>
+                        
+                        <div class="mt-4 d-flex justify-content-between small text-muted">
+                            <div>Protocol: <strong id="protocolText">Lightway</strong></div>
+                            <div>Speed: <strong id="speedText">—</strong></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <button onclick="runSpeedTest()" class="btn btn-outline-light px-4">
+                            <i class="fas fa-tachometer-alt me-2"></i> Run Speed Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Everything the ExpressVPN app offers — now in your browser</h2>
+                <p class="lead text-muted">Blazing fast • Military-grade encryption • Zero logs</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
+                        <h4>Lightway Protocol</h4>
+                        <p class="text-muted">Next-gen speed &amp; reliability. Faster than OpenVPN or WireGuard.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                        <h4>Kill Switch</h4>
+                        <p class="text-muted">Instant protection if the VPN drops. Your data never leaks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-random fa-3x text-primary mb-3"></i>
+                        <h4>Split Tunneling</h4>
+                        <p class="text-muted">Choose which apps use the VPN and which stay on your local network.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-lock fa-3x text-primary mb-3"></i>
+                        <h4>No-Logs Policy</h4>
+                        <p class="text-muted">We never track or store what you do online. Audited &amp; proven.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                        <h4>105 Countries</h4>
+                        <p class="text-muted">Servers in every continent. Unlock global content instantly.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <i class="fas fa-infinity fa-3x text-primary mb-3"></i>
+                        <h4>Unlimited Bandwidth</h4>
+                        <p class="text-muted">Stream, game, download without limits or throttling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVERS -->
+    <section id="servers" class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center display-6 fw-bold mb-5">Choose Your Location • 105 Countries</h2>
+            <div class="row g-3" id="serverList"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; Copyright SAMER SAEID. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        Made by ♥️ <a href="https://bio.link/samer" target="_blank" class="text-white text-decoration-underline">SAMER SAEID</a>
+                    </p>
+                </div>
+            </div>
+            <div class="text-center mt-4 small text-muted">
+                SEO Optimized • 100% Responsive • Works on Desktop, Phone, Tablet &amp; All Devices
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
